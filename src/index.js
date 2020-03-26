@@ -1,35 +1,47 @@
 import Senators from './data/senators'
 
+
 export const republicans = () => {
-  return REPLACE_ME_WITH_CODE
-}
+  return Senators.filter(sen => sen.party == "Republican")
+};
 
 export const democrats = () => {
-  return REPLACE_ME_WITH_CODE
+  return Senators.filter(sen => sen.party == "Democrat")
 }
 
 export const independents = () => {
-  return REPLACE_ME_WITH_CODE
+  return Senators.filter(sen => sen.party == "Independent")
 }
 
 export const males = () => {
-  return REPLACE_ME_WITH_CODE
+  return Senators.filter(sen => sen.person.gender == "male")
 }
 
 export const females = () => {
-  return REPLACE_ME_WITH_CODE
+  return Senators.filter(sen => sen.person.gender == "female")
 }
 
 export const byState = (state = 'UT') => {
-  return REPLACE_ME_WITH_CODE
+  return Senators.filter(sen => sen.state == "UT")
 }
 
 export const mapping = () => {
-  return REPLACE_ME_WITH_CODE
+  return Senators.map(sen => {
+    return {firstName: sen.person.firstname, lastName: sen.person.lastname, party: sen.party, gender: sen.party.gender}
+  })
+
 }
 
+
 export const reducedCount = () => {
-  return REPLACE_ME_WITH_CODE
+  
+  const count = Senators.reduce((tally,sen) => {
+  let senParty= sen.party.toLowerCase();
+    tally[senParty] = (tally[senParty] || 0) + 1;
+    return tally;
+  }, {})
+  return count;
+  
 }
 
 
